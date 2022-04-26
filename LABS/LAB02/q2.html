@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>SLIIT LAB 01</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+
+           function Vehicle(type){
+               this.type = type;
+               Vehicle.vehicleCount++;
+           }
+
+           Vehicle.vehicleCount = 0;
+           
+           Vehicle.prototype.drive = function(){
+               return "The vehicle is driving";
+           }
+
+           const toyota = new Vehicle('Toyota');
+           const nissan = new Vehicle('Nissan');
+           console.log(toyota);
+           console.log(nissan);
+           console.log(Vehicle.vehicleCount)
+           console.log(toyota.drive());
+           
+           function Car(type){
+               Vehicle.call(this,type);
+                this.balanceWheels = function(){
+                    return "Wheels are balanced!"
+                }
+           }
+
+           Car.prototype = Object.create(Vehicle.prototype);
+           Car.prototype.constructor = Car;
+
+           const lancer = new Car('Lancer');
+
+           console.log(lancer)
+           console.log(lancer.balanceWheels());
+           console.log(lancer.drive());
+           console.log(Vehicle.vehicleCount)
+
+
+
+        </script>
+    </body>
+</html>

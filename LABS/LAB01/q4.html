@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>SLIIT LAB 01</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function taxCalculator(percentage){
+                return function (amount){
+                    return percentage * amount;
+                }
+            }
+
+            var calculator = taxCalculator(0.12);
+            console.log(calculator(1000));
+            console.log(calculator(100));
+            
+        </script>
+    </body>
+</html>

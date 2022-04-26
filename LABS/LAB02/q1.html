@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <title>SLIIT LAB 01</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            //using callbacks
+            // function getValue(callback){
+            //     let value = 1;
+            //     setTimeout(function(){
+            //         value = 10;
+            //         callback(value);
+            //     },1000);
+            //     return value;
+            // }
+
+            // function getNewValue(value, callback){
+            //     setTimeout(function(){
+            //         callback(value * 100);
+            //     },1000);
+            // }
+
+            // getValue(function(value){
+            //     getNewValue(value, function(newValue){
+            //         console.log(newValue);
+            //     })
+            // });
+
+            //Using promises
+            // let promise = new Promise(function(resolve, reject){
+            //     resolve();
+            //     reject();
+            // });
+
+            // function getValue(){
+            //     let value = 0;
+            //     return new Promise(function (resolve, reject){
+            //         setTimeout(function(){
+            //             value = 10;
+            //             resolve(value);
+            //         })
+            //     })
+            // }
+
+            // function getNewValue(value){
+            //     return new Promise(function (resolve, reject){
+            //         setTimeout(function(){
+            //             resolve(value * 100);
+            //         })
+            //     })
+            // }
+
+            // getValue().then(function(value){
+            //     return getNewValue(value);
+            // }).then(function (value){
+            //     console.log(value);
+            // })
+
+            //using async await
+
+            function getValue(){
+                let value = 0;
+                return new Promise(function (resolve, reject){
+                    setTimeout(function(){
+                        value = 10;
+                        resolve(value);
+                    })
+                })
+            }
+
+            function getNewValue(value){
+                return new Promise(function (resolve, reject){
+                    setTimeout(function(){
+                        resolve(value * 100);
+                    })
+                })
+            }
+
+            async function print(){
+                try{
+                    let value = await getValue();
+                    value = await getNewValue(value);
+                    console.log(value);
+                }catch(error){
+                    console.error(error);
+                }
+               
+            }
+            print();
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>SLIIT LAB 01</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var vehicleName = 'LancerBox';
+
+            function printVehicleName(){
+                console.log(this.vehicleName);
+            }
+
+            printVehicleName();
+
+            // const Vehicle ={
+            //     vehicleName:'Axio',
+            //     getVehicleName: printVehicleName
+            // }
+
+            // Vehicle.getVehicleName();
+
+            const Vehicle ={
+                vehicleName:'Axio',
+                getVehicleName: function(){
+                    return function(){
+                        console.log(this.vehicleName);
+                    }
+                }
+            }
+
+            var execute = Vehicle.getVehicleName();
+            execute = execute.bind(Vehicle);
+            execute();
+
+        </script>
+    </body>
+</html>
